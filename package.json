@@ -1,0 +1,11 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "todo app api",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.3"
+  }
+}
