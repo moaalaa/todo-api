@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "todo app api",
   "scripts": {
+    "watch": "nodemon ./server/server.js",
     "postinstall": "link-module-alias",
     "preinstall": "link-module-alias clean"
   },
@@ -12,8 +13,8 @@
     "~root": ".",
     "~models": "./server/Models",
     "~db": "./server/db",
-    "~routes": "./server/routes"
-
+    "~routes": "./server/routes",
+    "~resources": "./server/resources"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
