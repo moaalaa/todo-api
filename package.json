@@ -20,6 +20,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
     "express-group-routes": "^1.1.0",
+    "express-response-formatter": "^1.0.0",
     "global": "^4.3.2",
     "mongodb": "^3.2.3",
     "mongoose": "^5.5.3",

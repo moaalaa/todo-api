@@ -40,7 +40,15 @@ const api = {
     error(error, code = 500) {
         this.data = [];
         this.code = code;
-        this.error = error.message;
+        let errorsMsg;
+
+        if (error.hasOwnProperty('message')) {
+            errorsMsg = error.message;
+        } else {
+            errorsMsg = error.toString();
+        }
+
+        this.error = errorsMsg;
         
         return this;
     }
