@@ -548,11 +548,6 @@ express-group-routes@^1.1.0:
   dependencies:
     express "^4.13.4"
 
-express-response-formatter@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/express-response-formatter/-/express-response-formatter-1.0.0.tgz#bf5103d139e4fcfd76894c87088e3d2a035f909e"
-  integrity sha512-1ipodRvbnCVgWkkIDhpNnotNpZ6ccHZ+0LmwCnpyGt28m6nr0vVD+rsN/qzhVdW1mR1d2IArV/lJ3oJNzyLnww==
-
 express@^4.13.4, express@^4.16.4:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.4.tgz#fddef61926109e24c515ea97fd2f1bdbf62df12e"
