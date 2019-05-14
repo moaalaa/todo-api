@@ -2,8 +2,19 @@
   "name": "todo-api",
   "version": "1.0.0",
   "description": "todo app api",
+  "scripts": {
+    "postinstall": "link-module-alias",
+    "preinstall": "link-module-alias clean"
+  },
   "main": "app.js",
   "license": "MIT",
+  "_moduleAliases": {
+    "~root": ".",
+    "~models": "./server/Models",
+    "~db": "./server/db",
+    "~routes": "./server/routes"
+
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
@@ -12,5 +23,8 @@
     "mongodb": "^3.2.3",
     "mongoose": "^5.5.3",
     "nodemon": "^1.19.0"
+  },
+  "devDependencies": {
+    "link-module-alias": "^1.2.0"
   }
 }

@@ -4,11 +4,10 @@ const bodyParser = require('body-parser');
 require('express-group-routes');
 
 // DB
-const {db} = require('./db/db');
+const {db} = require('~db/db');
 
 // Models
-const {Todo} = require('./Models/Todo');
-const {User} = require('./Models/User');
+const {User} = require('~models/User');
 
 // Init Express App
 const app = express();
@@ -17,15 +16,11 @@ const app = express();
 app.use(bodyParser.json())
 
 // Routes
+const todos = require('~routes/todos');
+
 
 app.group('/api', (router) => {
-    router.post('/todos', (req, res) => {
-        const todo = new Todo(req.body);
-        
-        todo.save()
-            .then(doc => res.status(201).send(doc))
-            .catch(e => res.status(400).send(e))
-    });
+    router.use('/todos', todos)
 })
 
 
