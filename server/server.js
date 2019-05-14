@@ -1,37 +1,36 @@
-const mongoose = require('mongoose');
+// Modules 
+const express = require('express');
+const bodyParser = require('body-parser');
+require('express-group-routes');
 
-// Use Promises As Default
-mongoose.Promise = global.Promise; 
+// DB
+const {db} = require('./db/db');
 
-// Connect To Mongo
-mongoose.connect('mongodb://127.0.0.1:27017/TodoApp', {useNewUrlParser: true});
+// Models
+const {Todo} = require('./Models/Todo');
+const {User} = require('./Models/User');
 
-let schema = new mongoose.Schema({
-    name: 'string',
-    completed: 'boolean',
-    completedAt: 'number'
+// Init Express App
+const app = express();
+
+// Use Body Parser 
+app.use(bodyParser.json())
+
+// Routes
+
+app.group('/api', (router) => {
+    router.post('/todos', (req, res) => {
+        const todo = new Todo(req.body);
+        
+        todo.save()
+            .then(doc => res.status(201).send(doc))
+            .catch(e => res.status(400).send(e))
+    });
+})
+
+
+
+// Start Http Server
+app.listen(3000, () => {
+    console.log("Server Started on Port 3000");
 });
-
-let Todo = mongoose.model('Todo', {
-    text: {
-        type: String
-    },
-    completed: {
-        type: Boolean
-    },
-    completedAt: {
-        type: Number
-    },
-});
-
-
-let newTodo = new Todo({
-    text: "Watch Node js Course",
-    completed: true,
-    completedAt: new Date()
-});
-
-newTodo.save()
-    .then((doc) => console.log('Saved Todo', doc))
-    .catch(e => console.log('error', e));
-
