@@ -7,9 +7,6 @@ const {ObjectID} = require('mongodb');
 // Models
 const {Todo} = require('~models/Todo');
 
-// Resource Manager
-const responder = require('~resources/basicResource')
-
 // Read All Todos
 router.get('/', (req, res) => {
     

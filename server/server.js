@@ -17,12 +17,16 @@ app.use(bodyParser.json())
 
 // Routes
 const todos = require('~routes/todos');
+const users = require('~routes/users');
 
 // Route Group
 app.group('/api', (router) => {
     
     // Todos Route
     router.use('/todos', todos)
+
+    // Users Route
+    router.use('/users', users)
 })
 
 // Start Http Server

@@ -21,10 +21,12 @@
     "express": "^4.16.4",
     "express-group-routes": "^1.1.0",
     "global": "^4.3.2",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "mongodb": "^3.2.3",
     "mongoose": "^5.5.3",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.0",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "link-module-alias": "^1.2.0"
