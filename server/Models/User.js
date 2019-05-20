@@ -35,6 +35,7 @@ const UserSchema = new mongoose.Schema({
 
 });
 
+// Add Methods To Instance by using "methods" property
 UserSchema.methods.toJSON = function () {
     const user = this;
     const userObj = user.toObject();
@@ -51,6 +52,25 @@ UserSchema.methods.generateAuthToken = function() {
 
     return user.save().then(() => token);
 
+};
+
+// Add Methods To Model by using "statics" property
+UserSchema.statics.findByToken = function (bearerToken) {
+    const User = this;
+    let decoded;
+    let token = (bearerToken.split("Bearer ")).pop();
+
+    try {
+        decoded = jwt.verify(token, 'some-secret');
+    } catch (e) {
+        return Promise.reject('Un Authorized');
+    }
+
+    return User.findOne({
+        '_id': decoded._id,
+        'tokens.token': token,
+        'tokens.access': 'auth'
+    })
 };
 
 const User = mongoose.model('User', UserSchema);

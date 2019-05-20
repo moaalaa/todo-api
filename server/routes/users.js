@@ -7,13 +7,10 @@ const {ObjectID} = require('mongodb');
 // Models
 const {User} = require('~models/User');
 
-// Read All Users
-router.get('/', (req, res) => {
-    
-    res.json({message: 'all users'})
-});
+// Middleware
+const {auth} = require('~middleware/auth');
 
-// Create New Users
+// Register New Users
 router.post('/', (req, res) => {
     const body = _.pick(req.body, ['email', 'password']);
     const user = new User(body);
@@ -26,19 +23,9 @@ router.post('/', (req, res) => {
         .catch(e => res.status(400).json({messages: e}))
 });
 
-// Read Single Users
-router.get('/:id', (req, res) => {
-    
-});
-
-// Update Single Todo
-router.patch('/:id', (req, res) => {
-    
-});
-
-// Delete Single Todo
-router.delete('/:id', (req, res) => {
-    
+// Profile Users
+router.get('/me', auth, (req, res) => {
+    res.send(req.user);
 });
 
 module.exports = router;
