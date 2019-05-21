@@ -6,152 +6,900 @@
 	},
 	"item": [
 		{
-			"name": "Read Single Todo",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+			"name": "Todo",
+			"item": [
+				{
+					"name": "Read All Todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/todos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"todos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Read All Todos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/todos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"todos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "163"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a3-D0X4oJXN3/LUgVF3AYxdCeyZ0zE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 12:23:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"completed\": false,\n            \"completedAt\": null,\n            \"_id\": \"5ce3ec34392c601bfc6cf922\",\n            \"text\": \"Finish Node Course Realtime\",\n            \"_owner\": \"5ce3e10cbe0df121e033509a\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
 				},
-				"url": {
-					"raw": "{{url}}/api/todos/5cdadbfc73a15f17180c21a6",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"todos",
-						"5cdadbfc73a15f17180c21a6"
+				{
+					"name": "Create Todos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Finish Node Course\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/todos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"todos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Todos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Finish Node Course\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/todos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"todos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "152"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"98-R2zLnAbE87YIfQTUaUpPKyVHdD8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 12:29:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"completed\": false,\n        \"completedAt\": null,\n        \"_id\": \"5ce3ef30846e2a06a0b118f4\",\n        \"text\": \"Finish Node Course\",\n        \"_owner\": \"5ce3e10cbe0df121e033509a\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Read Single Todo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/todos/5ce3ec34392c601bfc6cf922",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"todos",
+								"5ce3ec34392c601bfc6cf922"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Read Single Todo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/todos/5ce3ec34392c601bfc6cf922",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"todos",
+										"5ce3ec34392c601bfc6cf922"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "161"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a1-5DxH42rn9ShgGdV3nSnnhkw5T4c\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 12:28:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"completed\": false,\n        \"completedAt\": null,\n        \"_id\": \"5ce3ec34392c601bfc6cf922\",\n        \"text\": \"Finish Node Course Realtime\",\n        \"_owner\": \"5ce3e10cbe0df121e033509a\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Single Todo",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Finish Node Course today\",\n\t\"completed\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/todos/5ce3ec34392c601bfc6cf922",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"todos",
+								"5ce3ec34392c601bfc6cf922"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Single Todo",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"text\": \"Finish Node Course today\",\n\t\"completed\": true\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/todos/5ce3ec34392c601bfc6cf922",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"todos",
+										"5ce3ec34392c601bfc6cf922"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "166"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a6-OXbDv1DqcnQ+pitnStkm9sjJSVA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 12:33:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"5ce3ec34392c601bfc6cf922\",\n        \"completed\": true,\n        \"completedAt\": 1558442033306,\n        \"text\": \"Finish Node Course today\",\n        \"_owner\": \"5ce3e10cbe0df121e033509a\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Single Todo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/todos/5ce3ef30846e2a06a0b118f4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"todos",
+								"5ce3ef30846e2a06a0b118f4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Single Todo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/todos/5ce3ef30846e2a06a0b118f4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"todos",
+										"5ce3ef30846e2a06a0b118f4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "152"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"98-VJI1zUMFxkOV8U+AA17fzJakT84\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 12:31:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"_id\": \"5ce3ef30846e2a06a0b118f4\",\n        \"completed\": false,\n        \"completedAt\": null,\n        \"text\": \"Finish Node Course\",\n        \"_owner\": \"5ce3e10cbe0df121e033509a\",\n        \"__v\": 0\n    }\n}"
+						}
 					]
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
 			},
-			"response": []
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bca69aed-c43a-4d98-a999-03e82e634f3f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f7e059f-d0bf-49de-9220-b6b2eb7f056c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		},
 		{
-			"name": "Create Todos",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"text\": \"Finish Node Course Realtime\"\n}"
-				},
-				"url": {
-					"raw": "{{url}}/api/todos",
-					"host": [
-						"{{url}}"
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "312114b7-b1b4-4828-bd8d-3562e4d71474",
+								"exec": [
+									"let bearerToken = pm.response.headers.get('Authorization');",
+									"token = bearerToken.split(\"Bearer \").pop();",
+									"pm.environment.set(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
 					],
-					"path": [
-						"api",
-						"todos"
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"user1@example.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"user1@example.com\",\n\t\"password\": \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2UzZTEwY2JlMGRmMTIxZTAzMzUwOWEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTU4NDM4MTU2fQ.ddWgYz5JKHdeyCCFAxM5tCulEv07d7XdY-mDU0hvtfU"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-6D5D07/C3n9ufwruLfcYCcgzJGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 11:29:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"5ce3e10cbe0df121e033509a\",\n    \"email\": \"user1@example.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bc2cef70-d73d-4f6d-ad6b-f1bb20f0230d",
+								"exec": [
+									"let bearerToken = pm.response.headers.get('Authorization');",
+									"token = bearerToken.split(\"Bearer \").pop();",
+									"pm.environment.set(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"user1@example.com\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/users/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"user1@example.com\",\n\t\"password\": \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2UzZTEwY2JlMGRmMTIxZTAzMzUwOWEiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTU4NDM4MTU2fQ.ddWgYz5JKHdeyCCFAxM5tCulEv07d7XdY-mDU0hvtfU"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-6D5D07/C3n9ufwruLfcYCcgzJGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 11:29:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"5ce3e10cbe0df121e033509a\",\n    \"email\": \"user1@example.com\"\n}"
+						},
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"user1@example.com\",\n\t\"password\": \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/users/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-6D5D07/C3n9ufwruLfcYCcgzJGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 11:42:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"5ce3e10cbe0df121e033509a\",\n    \"email\": \"user1@example.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Me",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/users/me",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-6D5D07/C3n9ufwruLfcYCcgzJGQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 11:29:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"5ce3e10cbe0df121e033509a\",\n    \"email\": \"user1@example.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users/me/token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/users/me/token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"me",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 May 2019 12:01:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Read All Todos",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}/api/todos",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"todos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Single Todo",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{url}}/api/todos/5cdae83ee44ecd1b3ca92df5",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"todos",
-						"5cdae83ee44ecd1b3ca92df5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Single Todo",
-			"request": {
-				"method": "PATCH",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"text\": \"Finish Node Course today\",\n\t\"completed\": true\n}"
-				},
-				"url": {
-					"raw": "{{url}}/api/todos/5cdadbfc73a15f17180c21a6",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"todos",
-						"5cdadbfc73a15f17180c21a6"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
