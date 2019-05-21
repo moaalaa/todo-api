@@ -1,3 +1,6 @@
+// Configuration
+require('./config/config');
+
 // Modules 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -13,7 +16,7 @@ const {User} = require('~models/User');
 const app = express();
 
 // Port
-let port = process.env.NODE_PORT || 3000;
+let port = process.env.PORT || 3000;
 
 // Use Body Parser 
 app.use(bodyParser.json())
@@ -33,4 +36,4 @@ app.group('/api', (router) => {
 })
 
 // Start Http Server
-app.listen(port, () =>  console.log("Server Started on Port 3000"));
+app.listen(port, () => console.log(`Server Started on Port ${port}`));

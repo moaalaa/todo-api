@@ -47,7 +47,7 @@ UserSchema.methods.toJSON = function () {
 UserSchema.methods.generateAuthToken = function() {
     const user  = this;
     let access  = 'auth';
-    let token   = jwt.sign({_id: user._id.toHexString(), access}, 'some-secret').toString();
+    let token   = jwt.sign({_id: user._id.toHexString(), access}, process.env.JWT_SECRET).toString();
 
     user.tokens = user.tokens.concat([{access, token}]);
 
@@ -76,7 +76,7 @@ UserSchema.statics.findByToken = function (bearerToken) {
     let token = (bearerToken.split("Bearer ")).pop();
     
     try {
-        decoded = jwt.verify(token, 'some-secret');
+        decoded = jwt.verify(token, process.env.JWT_SECRET);
     } catch (e) {
         return Promise.reject('Un Authorized');
     }
