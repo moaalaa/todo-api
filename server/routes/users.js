@@ -17,10 +17,20 @@ router.post('/', (req, res) => {
 
     user.save()
         .then(user =>  user.generateAuthToken())
-        .then(token => {
-            res.header('Authorization', `Bearer ${token}`).send(user)
+        .then(token => res.header('Authorization', `Bearer ${token}`).send(user))
+        .catch(e => res.status(400).json({messages: e}));
+});
+
+// Login Users
+router.post('/login', (req, res) => {
+    const body = _.pick(req.body, ['email', 'password']);
+    
+    User.findByCredentials(body.email, body.password)
+        .then(user => {
+            return user.generateAuthToken()
+                .then(token => res.header('Authorization', `Bearer ${token}`).send(user))
         })
-        .catch(e => res.status(400).json({messages: e}))
+        .catch(e => res.status(404).json({messages: e}));
 });
 
 // Profile Users

@@ -74,6 +74,25 @@ UserSchema.statics.findByToken = function (bearerToken) {
     })
 };
 
+// Add Methods To Model by using "statics" property
+UserSchema.statics.findByCredentials = function (email, password) {
+    const User = this;
+    
+
+    return User.findOne({email})
+        .then(user => {
+            if (! user) {
+                return Promise.reject("Credentials Not Found")
+            }
+
+            if (bcrypt.compareSync(password, user.password)) {
+                return Promise.resolve(user);
+            }
+
+            return Promise.reject("Credentials Not Found");
+        });
+};
+
 
 // Add Event Listener
 UserSchema.pre('save', function (next) {
