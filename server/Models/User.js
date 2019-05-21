@@ -55,6 +55,19 @@ UserSchema.methods.generateAuthToken = function() {
 
 };
 
+UserSchema.methods.removeToken = function (bearerToken) {
+    const user  = this;
+
+    let token = (bearerToken.split("Bearer ")).pop();
+    
+    return user.update({
+        $pull: {
+            tokens: { token }
+        }
+    })
+
+};
+
 // Add Methods To Model by using "statics" property
 UserSchema.statics.findByToken = function (bearerToken) {
     const User = this;

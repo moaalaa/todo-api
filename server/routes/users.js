@@ -38,6 +38,13 @@ router.get('/me', auth, (req, res) => {
     res.send(req.user);
 });
 
+// logout Users
+router.delete('/me/token', auth, (req, res) => {
+    req.user.removeToken(req.token)
+        .then(() => res.status(200).send())
+        .catch(e => res.status(400).json({messages: e}));
+});
+
 module.exports = router;
 
 
