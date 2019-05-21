@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const validator = require('validator');
@@ -72,6 +73,25 @@ UserSchema.statics.findByToken = function (bearerToken) {
         'tokens.access': 'auth'
     })
 };
+
+
+// Add Event Listener
+UserSchema.pre('save', function (next) {
+    const user = this;
+
+    // when Save User it hash password
+    // but when update the user (but not updating the password) it will hash password again
+    // so we check if the password is modified (updated)
+    if (user.isModified('password')) {
+        let salt = bcrypt.genSaltSync(10);
+        user.password = bcrypt.hashSync(user.password, salt);
+        next();
+    } else {
+        next();
+    }
+
+
+}) 
 
 const User = mongoose.model('User', UserSchema);
 
