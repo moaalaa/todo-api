@@ -72,8 +72,9 @@ UserSchema.methods.removeToken = function (bearerToken) {
 UserSchema.statics.findByToken = function (bearerToken) {
     const User = this;
     let decoded;
-    let token = (bearerToken.split("Bearer ")).pop();
 
+    let token = (bearerToken.split("Bearer ")).pop();
+    
     try {
         decoded = jwt.verify(token, 'some-secret');
     } catch (e) {

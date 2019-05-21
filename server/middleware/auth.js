@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
             if (!user) {
                 return Promise.reject('Un Authorized')
             }
-
+            
             req.user = user;
             req.token = token;
             next();

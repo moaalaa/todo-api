@@ -7,30 +7,40 @@ const {ObjectID} = require('mongodb');
 // Models
 const {Todo} = require('~models/Todo');
 
+// Middleware
+const {auth} = require('~middleware/auth');
+
 // Read All Todos
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
     
-    Todo.find()
+    Todo.find({
+        _owner: req.user._id
+    })
         .then(docs => res.json({data: docs}))
         .catch(e => res.status(500).json({messages: e}))
 });
 
 // Create New Todos
-router.post('/', (req, res) => {
-    Todo.create(req.body)
+router.post('/', auth, (req, res) => {
+    const body = _.assign(req.body, {_owner: req.user._id});
+    
+    Todo.create(body)
         .then(doc => res.status(201).json({data: doc}))
         .catch(e => res.status(400).json({messages: e}))
 });
 
 // Read Single Todos
-router.get('/:id', (req, res) => {
+router.get('/:id', auth, (req, res) => {
     let id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
         res.status(404).json({messages: 'Not Found'});
     }
     
-    Todo.findById(id)
+    Todo.findOne({
+        _id: id,
+        _owner: req.user._id
+    })
         .then(doc => {
             if (!doc) {
                 res.status(404).json({messages: 'Not Found'});
@@ -43,7 +53,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Update Single Todo
-router.patch('/:id', (req, res) => {
+router.patch('/:id', auth, (req, res) => {
     let id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -60,7 +70,8 @@ router.patch('/:id', (req, res) => {
     }
 
     // Return New Document
-    Todo.findByIdAndUpdate(id, {$set: body}, {new: true}).then(doc => {
+    Todo.findOneAndUpdate({ _id: id, _owner: req.user._id },  { $set: body },  { new: true })
+        .then(doc => {
             if (!doc) {
                 res.status(404).json({messages: 'Not Found'});
 
@@ -72,14 +83,17 @@ router.patch('/:id', (req, res) => {
 });
 
 // Delete Single Todo
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
     let id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
         res.status(404).json({messages: 'Not Found'});
     }
 
-    Todo.findByIdAndRemove(id)
+    Todo.findOneAndRemove({
+        _id: id,
+        _owner: req.user._id
+    })
         .then(doc => {
             if (!doc) {
                 res.status(404).json({messages: 'Not Found'});
